@@ -1,4 +1,4 @@
-balticanea_presentations
+Balticanea courses repo
 ========================
 
-This is a repo of presentations intended to educate about Mer/Nemo distributions and others based on them (e.g. Sailfish, Plasma Active). Those presentations could be an aid to prepare academic courses.
+This is a repo of presentations and educational materials about Mer/Nemo and other distributions based on them (e.g. Sailfish, Plasma Active). Those presentations are intended to be an aid in preparing lectures/laboratories or other kind of activities in academic courses connected with mobile programming or embeded systems.
