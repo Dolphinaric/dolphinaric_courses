@@ -27,7 +27,7 @@ Introduction to Mer/Nemo and platform development
 2. What Mer consists of?  
   Showing key parts of Mer
 3. What is Nemo Mobile and how it relates to Mer?
-4. What are the other projects based on Mer?
+4. What are the other projects based on Mer?  
   Short presentation of Sailfish, Plasma Active, Seadot etc.
 5. Communication in project
   What are the communication channels, how the development process looks like
