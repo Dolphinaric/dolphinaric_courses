@@ -5,5 +5,5 @@ This is a repo of presentations and educational materials about Mer/Nemo and oth
 
 First goal is to prepare following presentations:
 * Introduction to Mer/Nemo and platform development
-* Introduction to Sailfish development
+* Introduction to Sailfish application development
 * Introduction to Plasma Active development
