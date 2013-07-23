@@ -20,9 +20,9 @@ Introduction to Mer/Nemo and platform development
 ***
 
 **Lecture 1**: Mer/Nemo projects - introduction
-**Recommended time: 90 min**
+**Recommended time: 90 min**  
 
-Plan/slides:
+**Plan/slides:**  
 1. History and goals of the Mer project
   * When, who, why?
   * What was Maemo, Meego/What is Tizen and how its development process looks like
