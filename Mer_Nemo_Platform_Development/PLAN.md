@@ -34,7 +34,7 @@ Introduction to Mer/Nemo and platform development
 6. Seeking help and effectively solving problems
 7. To be continued ...
 
-**Lecture 2**:
+**Lecture 2**: Mer development
 
 **Lecture 3**: Nemo Mobile and its parts
 
