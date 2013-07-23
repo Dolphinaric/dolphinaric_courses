@@ -41,5 +41,6 @@ Introduction to Mer/Nemo and platform development
 ***
 
 **Laboratory 1**: Setting up Mer Platform SDK
+**Recommended time: 180 min**
 
 First task would be setting up Platform SDK according to the instructions from [Platform SDK page on Mer Wiki](https://wiki.merproject.org/wiki/Platform_SDK). Their next tasks would be creating image for Raspberry Pi based on the [kickstart file](https://wiki.merproject.org/wiki/Community_Workspace/RaspberryPi). After flashing the memory card with the prepared image they would boot Mer on Raspberry Pi board.
