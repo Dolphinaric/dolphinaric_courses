@@ -34,13 +34,34 @@ Introduction to Mer/Nemo and platform development
 6. Seeking help and effectively solving problems
 7. To be continued ...
 
+***
+
 **Lecture 2**: Mer development
+
+***
 
 **Lecture 3**: Nemo Mobile and its parts
 
 ***
 
-**Laboratory 1**: Setting up Mer Platform SDK
+**Laboratory 1**: Setting up Mer Platform SDK  
 **Recommended time: 180 min**
 
+Scenario:  
 First task would be setting up Platform SDK according to the instructions from [Platform SDK page on Mer Wiki](https://wiki.merproject.org/wiki/Platform_SDK). Their next tasks would be creating image for Raspberry Pi based on the [kickstart file](https://wiki.merproject.org/wiki/Community_Workspace/RaspberryPi). After flashing the memory card with the prepared image they would boot Mer on Raspberry Pi board.
+
+***
+
+**Laboratory 2**: ?  
+**Recommended time: 180 min**
+
+Scenario:  
+?
+
+***
+
+**Laboratory 3**: ?  
+**Recommended time: 180 min**
+
+Scenario:  
+?
