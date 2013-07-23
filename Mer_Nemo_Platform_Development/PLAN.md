@@ -38,12 +38,12 @@ Introduction to Mer/Nemo and platform development
 
 ***
 
-**Lecture 2**: Mer development
+**Lecture 2**: Mer development  
 **Recommended time: 90 min**
 
 ***
 
-**Lecture 3**: Nemo Mobile and its parts
+**Lecture 3**: Nemo Mobile and its parts  
 **Recommended time: 180 min**
 
 ***
@@ -57,7 +57,7 @@ First task would be setting up Platform SDK according to the instructions from [
 ***
 
 **Laboratory 2**: ?  
-**Recommended time: 180 min**
+**Recommended time: 180 min**  
 
 **Scenario:**  
 ?
@@ -65,7 +65,7 @@ First task would be setting up Platform SDK according to the instructions from [
 ***
 
 **Laboratory 3**: ?  
-**Recommended time: 180 min**
+**Recommended time: 180 min**  
 
 **Scenario:**  
 ?
