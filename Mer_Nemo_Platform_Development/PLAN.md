@@ -19,7 +19,7 @@ Introduction to Mer/Nemo and platform development
 
 ***
 
-**Lecture 1**: Mer/Nemo projects - introduction
+**Lecture 1**: Mer/Nemo projects - introduction  
 **Recommended time: 90 min**  
 
 **Plan/slides:**  
