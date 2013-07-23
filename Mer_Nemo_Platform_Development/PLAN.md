@@ -5,12 +5,14 @@ Introduction to Mer/Nemo and platform development
 **Laboratories**: 3 x 180 min
 
 
-**Lectures:**  
+**Lectures:**
+
 1. Mer/Nemo projects - introduction
 2. ...
 3. ...
 
-**Laboratories:**  
+**Laboratories:**
+
 1. Setting up Mer Platform SDK
 2. ...
 3. ...
