@@ -36,7 +36,7 @@ Introduction to Mer/Nemo and platform development
 
 **Lecture 2**:
 
-**Lecture 3**:
+**Lecture 3**: Nemo Mobile and its parts
 
 ***
 
