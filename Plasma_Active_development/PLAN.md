@@ -1,8 +1,8 @@
 Introduction to Plasma Active development
 =========================================
 
-Lectures: ???
-Laboratories: ???
+**Lectures**: ? x ??? min  
+**Laboratories**: ? x ??? min
 
 
 
