@@ -22,11 +22,17 @@ Introduction to Mer/Nemo and platform development
 **Lecture 1**: Mer/Nemo projects - introduction
 
 1. History and goals of the Mer project
-2. What are the parts of Mer?
+  * When, who, why?
+  * What was Maemo, Meego/What is Tizen and how its development process looks like
+2. What Mer consists of?  
+  Showing key parts of Mer
 3. What is Nemo Mobile and how it relates to Mer?
 4. What are the other projects based on Mer?
+  Short presentation of Sailfish, Plasma Active, Seadot etc.
 5. Communication in project
-6. To be continued ...
+  What are the communication channels, how the development process looks like
+6. Seeking help and effectively solving problems
+7. To be continued ...
 
 **Lecture 2**:
 
