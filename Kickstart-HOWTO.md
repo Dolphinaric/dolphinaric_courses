@@ -81,7 +81,7 @@ Packages can be specified by group or by individual package name. The installati
 
 Groups are specified, one to a line, starting with an @ symbol followed by the full group name or by using the group id. Specify individual packages with no additional characters.
 
-Again there many other tricks and options you can use. Check it [here](https://fedoraproject.org/wiki/Anaconda/Kickstart).
+Again there are many other tricks and options you can use. Check it [here](https://fedoraproject.org/wiki/Anaconda/Kickstart).
 
 
 ##Chapter 4. Post-Installation Script##
