@@ -10,16 +10,16 @@ The kickstart file is a simple text file, each identified by a keyword. You can 
 
 You must be aware of the following issues when you are creating your kickstart file:
 
-**While not strictly required, there is a natural order for sections that should be followed. Items within the sections do not have to be in a specific order unless otherwise noted. The section order is:
+* While not strictly required, there is a natural order for sections that should be followed. Items within the sections do not have to be in a specific order unless otherwise noted. The section order is:
 
     1. Command section
     2. The %packages section -- Refer to Chapter 3 for details.
     3. The %pre, %post, and %traceback sections -- These sections can be in any order and are not required. 
 
-**The %packages, %pre, %post and %traceback sections are all required to be closed with %end
-**Items that are not required can be omitted.
-**Omitting any required item will result in the installation program prompting the user for an answer to the related item, just as the user would be prompted during a typical installation. Once the answer is given, the installation will continue unattended unless it finds another missing item.
-**Lines starting with a pound sign (#) are treated as comments and are ignored.
+* The %packages, %pre, %post and %traceback sections are all required to be closed with %end
+* Items that are not required can be omitted.
+* Omitting any required item will result in the installation program prompting the user for an answer to the related item, just as the user would be prompted during a typical installation. Once the answer is given, the installation will continue unattended unless it finds another missing item.
+* Lines starting with a pound sign (#) are treated as comments and are ignored.
 
 ##Chapter 2. Kickstart options##
 The following is a sort list of options containing only the basic ones you will need. For a complete referrence of all available options please check [Kickstart options](https://fedoraproject.org/wiki/Anaconda/Kickstart#)
