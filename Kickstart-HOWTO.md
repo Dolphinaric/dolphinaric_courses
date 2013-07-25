@@ -14,8 +14,7 @@ You must be aware of the following issues when you are creating your kickstart f
 
     1. Command section
     2. The %packages section -- Refer to Chapter 3 for details.
-    3. The %pre, %post, and %traceback sections -- These sections can be in any order and are not required. 
-
+    3. The %pre, %post, and %traceback sections -- These sections can be in any order and are not required. *
 * The %packages, %pre, %post and %traceback sections are all required to be closed with %end
 * Items that are not required can be omitted.
 * Omitting any required item will result in the installation program prompting the user for an answer to the related item, just as the user would be prompted during a typical installation. Once the answer is given, the installation will continue unattended unless it finds another missing item.
