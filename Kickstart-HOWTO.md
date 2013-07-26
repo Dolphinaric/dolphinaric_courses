@@ -103,9 +103,9 @@ After creating the kickstart file you can use mic image creator to produce the f
 
 ##Sample Kickstart file walkthrough##
 Code:
-	#
-	# Kickstart for Raspberry Pi
-	#
+<pre><code>#
+# Kickstart for Raspberry Pi
+#</code><pre>
 Explanation:
 Lines beginning with the symbol (#) are treated as comments and therefore are ignored.
 
