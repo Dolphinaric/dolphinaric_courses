@@ -183,3 +183,78 @@ Code:
 	
 Explanation:
 %packages command begins a section that lists the packages to be installed. It must end with %end.
+
+	@Mer Connectivity
+	@Mer Graphics Common
+	@Mer Minimal Xorg
+	@Mer Core 
+
+Lines starting with the @ sign specify a whole group of packages to be installed in a single line. Package group should be declared by its full name.
+
+	bootloader-rpi
+	kernel-adaptation-rpi
+
+	gfx-rpi
+	gfx-rpi-libOMXIL
+	gfx-rpi-libEGL
+	gfx-rpi-libGLESv1
+	gfx-rpi-libGLESv2
+
+
+	qt-qmlviewer
+	xorg-x11-drv-evdev
+	xorg-x11-drv-vesa
+	xorg-x11-drv-fbdev
+	xorg-x11-server-Xorg-setuid
+	-xorg-x11-server-Xorg
+
+	openssh
+	openssh-clients
+	openssh-server
+
+Lines which don't start with the @ sign specify a single package to be installed. In this particular example, the first two install the bootloader, the next two groups install the graphical interface and some graphic accelerators and the last three install ssh service.
+
+Code:
+
+	%post
+	
+Explanation:
+%post starts a section where you can add commands to run after the installation of the system. This section must be at the end of the kickstart file and is required to end with %end.
+* --nochroot: allows you to specify commands that you would like to run outside the chroot environment.
+
+	# Without this line the rpm don't get the architecture right.
+	echo -n 'armv6l-meego-linux' > /etc/rpm/platform
+	
+	# Also libzypp has problems in autodetecting the architecture so we force tha as well.
+	# https://bugs.meego.com/show_bug.cgi?id=11484
+	echo 'arch = armv6l' >> /etc/zypp/zypp.conf
+
+	# Create a session file for qmlviewer.
+	cat > /usr/share/xsessions/X-MER-QMLVIEWER.desktop << EOF
+	[Desktop Entry]
+	Version=1.0
+	Name=qmlviewer
+	Exec=/usr/bin/qmlviewer
+	Type=Application
+	EOF
+
+	# Set symlink pointing to .desktop file 
+	ln -sf X-MER-QMLVIEWER.desktop /usr/share/xsessions/default.desktop
+
+	# Rebuild db using target's rpm
+	echo -n "Rebuilding db using target rpm.."
+	rm -f /var/lib/rpm/__db*
+	rpm --rebuilddb
+	echo "done"
+
+	# Prelink can reduce boot time
+	if [ -x /usr/sbin/prelink ]; then
+	   echo -n "Running prelink.."
+	   /usr/sbin/prelink -aRqm
+	   echo "done"
+	fi
+
+The above section is already well commented.
+
+This guide is based on the official Fedora project guide. You can find the whole documentation (as well as with more details in the above described) [here](https://fedoraproject.org/wiki/Anaconda/Kickstart)
+ 
