@@ -253,8 +253,8 @@ Explanation:
 	   /usr/sbin/prelink -aRqm
 	   echo "done"
 	fi
-	
+
 The above section is already well commented.
 
-This guide is based on the official Fedora project guide. You can find the whole documentation (as well as with more details in the above described) [here](https://fedoraproject.org/wiki/Anaconda/Kickstart)
+This guide is based on the official Fedora project guide. You can find the whole documentation (as well as more details for what was described in this guide) [here](https://fedoraproject.org/wiki/Anaconda/Kickstart)
  
