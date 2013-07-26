@@ -172,3 +172,14 @@ Code:
 Explanation:
 repo command configures additional repositories that may be used for package installation.
 * --name: sets the id of the repository. This option is required.
+* --baseurl: sets the URL for the repository.
+* --save: saves the repository in /etc/zypp/repos.d.
+* --debuginfo: adds the debuginfo repository.
+* --source: ??
+
+Code:
+
+	%packages
+	
+Explanation:
+%packages command begins a section that lists the packages to be installed. It must end with %end.
