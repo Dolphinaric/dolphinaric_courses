@@ -107,13 +107,68 @@ Code:
 	#
 	# Kickstart for Raspberry Pi
 	#
-	
+
 Explanation:
 Lines beginning with the symbol (#) are treated as comments and therefore are ignored.
 
 Code:
 
 	lang en_US.UTF-8
-	
+
 Explanation:
 lang command is used to set the language to use during installation and the default language to use on the installed system.
+
+Code:
+
+	keyboard us
+	
+Explanation:
+keyboard command is used to set the system keyboard type.
+
+Code:
+
+	timezone --utc UTC
+	
+Explanation:
+timezone command is used to set the system timezone. If the --utc option is present the system assumes the hardware clock is set to UTC time.
+
+Code:
+
+	part /boot --size 50 --ondisk mmcblk0p --fstype=vfat
+	part / --size 1500 --ondisk mmcblk0p --fstype=ext4
+	
+Explanation:
+part command is used to create a partition. It takes one argument: the mount point where the partition will be mounted.
+* --size: sets the size of partition in MB.
+* --ondisk: forces the partition to be created on a particular disk.
+* --fstype: sets the filesystem type of the partition.
+
+Code:
+
+	rootpw rootme
+	
+Explanation:
+rootpw sets the password for the root account.
+
+Code:
+
+	user --name mer  --groups audio,video --password rootme
+	
+Explanation:
+user command creates a new user. 
+* --name: sets the username.
+* --group: specifies the groups where this user should belong besides the default one.
+* --password: sets the user's password.
+
+Code:
+
+	repo --name=mer-core --baseurl=http://releases.merproject.org/releases/latest/builds/armv6l/packages --save --debuginfo --source
+	repo --name=mer-tools --baseurl=http://repo.merproject.org/obs/mer-tools:/stable/latest_armv6l/ --save --debuginfo --source
+	repo --name=rpi-ha --baseurl=http://repo.merproject.org/obs/nemo:/devel:/hw:/brcm:/bcm2835:/rpi/latest_armv6l/ --save --debuginfo --source
+	repo --name=nemo-mw --baseurl=http://repo.merproject.org/obs/nemo:/stable:/mw/latest_armv6l/ --save --debuginfo --source
+
+	repo --name=rpi-ha_mod --baseurl=http://repo.merproject.org/obs/home:/JvD:/branches:/nemo:/devel:/hw:/brcm:/bcm2835:/rpi/latest_armv6l/ --save --debuginfo --source
+	
+Explanation:
+repo command configures additional repositories that may be used for package installation.
+* --name: sets the id of the repository. This option is required.
