@@ -103,13 +103,17 @@ After creating the kickstart file you can use mic image creator to produce the f
 
 ##Sample Kickstart file walkthrough##
 Code:
+
 	#
 	# Kickstart for Raspberry Pi
 	#
+	
 Explanation:
 Lines beginning with the symbol (#) are treated as comments and therefore are ignored.
 
 Code:
+
 	lang en_US.UTF-8
+	
 Explanation:
 lang command is used to set the language to use during installation and the default language to use on the installed system.
