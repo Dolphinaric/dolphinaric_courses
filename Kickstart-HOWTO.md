@@ -223,14 +223,14 @@ Explanation:
 * --nochroot: allows you to specify commands that you would like to run outside the chroot environment.
 
 
-	# Without this line the rpm don't get the architecture right.
+	\# Without this line the rpm don't get the architecture right.
 	echo -n 'armv6l-meego-linux' > /etc/rpm/platform
 	
-	# Also libzypp has problems in autodetecting the architecture so we force tha as well.
-	# https://bugs.meego.com/show_bug.cgi?id=11484
+	\# Also libzypp has problems in autodetecting the architecture so we force tha as well.
+	\# https://bugs.meego.com/show_bug.cgi?id=11484
 	echo 'arch = armv6l' >> /etc/zypp/zypp.conf
 
-	# Create a session file for qmlviewer.
+	\# Create a session file for qmlviewer.
 	cat > /usr/share/xsessions/X-MER-QMLVIEWER.desktop << EOF
 	[Desktop Entry]
 	Version=1.0
@@ -239,16 +239,16 @@ Explanation:
 	Type=Application
 	EOF
 
-	# Set symlink pointing to .desktop file 
+	\# Set symlink pointing to .desktop file 
 	ln -sf X-MER-QMLVIEWER.desktop /usr/share/xsessions/default.desktop
 
-	# Rebuild db using target's rpm
+	\# Rebuild db using target's rpm
 	echo -n "Rebuilding db using target rpm.."
 	rm -f /var/lib/rpm/__db*
 	rpm --rebuilddb
 	echo "done"
 
-	# Prelink can reduce boot time
+	\# Prelink can reduce boot time
 	if [ -x /usr/sbin/prelink ]; then
 	   echo -n "Running prelink.."
 	   /usr/sbin/prelink -aRqm
