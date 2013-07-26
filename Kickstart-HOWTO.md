@@ -8,7 +8,7 @@ Kickstart files are used to automatically install the OS into a machine. In our 
 ###How can I use the kickstart file###
 After creating the kickstart file you can use mic image creator to produce the final system image.
 
-##Sample Kickstart file (for Raspberry Pi)##
+##Sample Kickstart file source code(for Raspberry Pi)##
 	#
 	# Kickstart for Raspberry Pi
 	#
