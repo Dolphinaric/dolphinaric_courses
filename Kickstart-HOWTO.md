@@ -222,7 +222,7 @@ Explanation:
 %post starts a section where you can add commands to run after the installation of the system. This section must be at the end of the kickstart file and is required to end with %end.
 * --nochroot: allows you to specify commands that you would like to run outside the chroot environment.
 
-	\# Without this line the rpm don't get the architecture right.
+	<pre><code>\# Without this line the rpm don't get the architecture right.
 	echo -n 'armv6l-meego-linux' > /etc/rpm/platform
 	
 	\# Also libzypp has problems in autodetecting the architecture so we force tha as well.
@@ -252,7 +252,7 @@ Explanation:
 	   echo -n "Running prelink.."
 	   /usr/sbin/prelink -aRqm
 	   echo "done"
-	fi
+	fi</code><pre>
 
 The above section is already well commented.
 
