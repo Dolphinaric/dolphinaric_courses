@@ -1,27 +1,103 @@
-#Introduction to making your own kickstart files#
+#How to make your own kickstart files#
 
-##Chapter 1. Introduction##
+##Introduction##
 
 ###What are Kickstart installations?###
-Many system administrators would prefer to use an automated installation method to install the OS to their machines. The answer to this are the kickstart files (originally created by RedHat). Using kickstart, a system administrator can create a single file containing the answers to all the questions that would normally be asked during a typical installation.
+Kickstart files are used to automatically install the OS into a machine. In our case it is the preferred way of installing the OS into an embedded device. They contain specific instructions about the configuration files, the packages to be installed, etc. After creating the kickstart file you can use mic image creator to produce the final system image.
 
-###Creating the Kickstart file###
-The kickstart file is a simple text file, each identified by a keyword. You can create it by using the Kickstart Configurator application or by writing it from scratch. In your case you will use the appropriate kickstart file provided in the Mer project wiki (according to which board your are building an image).
+##Sample Kickstart file (for Raspberry Pi)##
+    #
+	# Kickstart for Raspberry Pi
+	#
 
-You must be aware of the following issues when you are creating your kickstart file:
+	lang en_US.UTF-8
+	keyboard us
+	timezone --utc UTC
+	part /boot --size 50 --ondisk mmcblk0p --fstype=vfat
+	part / --size 1500 --ondisk mmcblk0p --fstype=ext4
+	rootpw rootme 
 
-* While not strictly required, there is a natural order for sections that should be followed. Items within the sections do not have to be in a specific order unless otherwise noted. The section order is:
+	user --name mer  --groups audio,video --password rootme 
 
-    1. Command section
-    2. The %packages section -- Refer to Chapter 3 for details.
-    3. The %pre, %post, and %traceback sections -- These sections can be in any order and are not required.
-* The %packages, %pre, %post and %traceback sections are all required to be closed with %end
-* Items that are not required can be omitted.
-* Omitting any required item will result in the installation program prompting the user for an answer to the related item, just as the user would be prompted during a typical installation. Once the answer is given, the installation will continue unattended unless it finds another missing item.
-* Lines starting with a pound sign (#) are treated as comments and are ignored.
+	repo --name=mer-core --baseurl=http://releases.merproject.org/releases/latest/builds/armv6l/packages --save --debuginfo --source
+	repo --name=mer-tools --baseurl=http://repo.merproject.org/obs/mer-tools:/stable/latest_armv6l/ --save --debuginfo --source
+	repo --name=rpi-ha --baseurl=http://repo.merproject.org/obs/nemo:/devel:/hw:/brcm:/bcm2835:/rpi/latest_armv6l/ --save --debuginfo --source
+	repo --name=nemo-mw --baseurl=http://repo.merproject.org/obs/nemo:/stable:/mw/latest_armv6l/ --save --debuginfo --source
 
-##Chapter 2. Kickstart options##
-The following is a sort list of options containing only the basic ones you will need. For a complete referrence of all available options please check [Kickstart options](https://fedoraproject.org/wiki/Anaconda/Kickstart#)
+	repo --name=rpi-ha_mod --baseurl=http://repo.merproject.org/obs/home:/JvD:/branches:/nemo:/devel:/hw:/brcm:/bcm2835:/rpi/latest_armv6l/ --save --debuginfo --source
+
+	%packages
+
+	@Mer Connectivity
+	@Mer Graphics Common
+	@Mer Minimal Xorg
+	@Mer Core
+
+	#@Raspberry Pi Boot
+	bootloader-rpi
+	kernel-adaptation-rpi
+
+	#@Raspberry Pi GFX
+	gfx-rpi
+	gfx-rpi-libOMXIL
+	gfx-rpi-libEGL
+	gfx-rpi-libGLESv1
+	gfx-rpi-libGLESv2
+
+
+	qt-qmlviewer
+	xorg-x11-drv-evdev
+	xorg-x11-drv-vesa
+	xorg-x11-drv-fbdev
+	xorg-x11-server-Xorg-setuid
+	-xorg-x11-server-Xorg
+
+	openssh
+	openssh-clients
+	openssh-server
+	
+	%end
+
+	%post
+	# Without this line the rpm don't get the architecture right.
+	echo -n 'armv6l-meego-linux' > /etc/rpm/platform
+	
+	# Also libzypp has problems in autodetecting the architecture so we force tha as well.
+	# https://bugs.meego.com/show_bug.cgi?id=11484
+	echo 'arch = armv6l' >> /etc/zypp/zypp.conf
+
+	# Create a session file for qmlviewer.
+	cat > /usr/share/xsessions/X-MER-QMLVIEWER.desktop << EOF
+	[Desktop Entry]
+	Version=1.0
+	Name=qmlviewer
+	Exec=/usr/bin/qmlviewer
+	Type=Application
+	EOF
+
+	# Set symlink pointing to .desktop file 
+	ln -sf X-MER-QMLVIEWER.desktop /usr/share/xsessions/default.desktop
+
+	# Rebuild db using target's rpm
+	echo -n "Rebuilding db using target rpm.."
+	rm -f /var/lib/rpm/__db*
+	rpm --rebuilddb
+	echo "done"
+
+	# Prelink can reduce boot time
+	if [ -x /usr/sbin/prelink ]; then
+	   echo -n "Running prelink.."
+	   /usr/sbin/prelink -aRqm
+	   echo "done"
+	fi
+
+
+	%end
+
+	%post --nochroot
+
+	%end
+
 
 1. lang
 This required command sets the language to use during installation and the default language to use on the installed system to <id>. This can be the same as any recognized setting for the $LANG environment variable, though not all languages are supported during installation.
@@ -81,7 +157,7 @@ Packages can be specified by group or by individual package name. The installati
 
 Groups are specified, one to a line, starting with an @ symbol followed by the full group name or by using the group id. Specify individual packages with no additional characters.
 
-Again there are many other tricks and options you can use. Check it [here](https://fedoraproject.org/wiki/Anaconda/Kickstart).
+Again there many other tricks and options you can use. Check it [here](https://fedoraproject.org/wiki/Anaconda/Kickstart).
 
 
 ##Chapter 4. Post-Installation Script##
