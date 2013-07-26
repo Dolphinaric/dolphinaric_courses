@@ -220,9 +220,8 @@ Code:
 	
 Explanation:
 %post starts a section where you can add commands to run after the installation of the system. This section must be at the end of the kickstart file and is required to end with %end.
-* --nochroot: allows you to specify commands that you would like to run outside the chroot environment.
 
-	<pre><code>\# Without this line the rpm don't get the architecture right.
+	\# Without this line the rpm don't get the architecture right.
 	echo -n 'armv6l-meego-linux' > /etc/rpm/platform
 	
 	\# Also libzypp has problems in autodetecting the architecture so we force tha as well.
@@ -252,9 +251,11 @@ Explanation:
 	   echo -n "Running prelink.."
 	   /usr/sbin/prelink -aRqm
 	   echo "done"
-	fi</code><pre>
+	fi
 
 The above section is already well commented.
+
+* --nochroot: allows you to specify commands that you would like to run outside the chroot environment.
 
 This guide is based on the official Fedora project guide. You can find the whole documentation (as well as more details for what was described in this guide) [here](https://fedoraproject.org/wiki/Anaconda/Kickstart)
  
