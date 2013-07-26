@@ -216,7 +216,7 @@ Lines which don't start with the @ sign specify a single package to be installed
 
 Code:
 
-	%post
+	%post [--nochroot]
 	
 Explanation:
 %post starts a section where you can add commands to run after the installation of the system. This section must be at the end of the kickstart file and is required to end with %end.
