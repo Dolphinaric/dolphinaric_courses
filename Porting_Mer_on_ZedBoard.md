@@ -72,4 +72,5 @@ In order to see what's going on during the system booting you should connect you
 
 ###Booting Linux on Zedboard###
 Now copy the three files *BOOT.BIN*, *devicetree.dtb* and *uImage* created by the previous steps in the /boot partition of your SD card. Then insert the card into the board and connect it with your computer. Turn the power switch on and open Tera Term. From **Setup->Serial Port** configure the baud rate to 115200 and click ok.
+Optionally at this point, the terminal settings can be saved for later use. To do so, click on **Setup->Save**.
 
