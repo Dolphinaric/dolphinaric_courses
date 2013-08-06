@@ -61,7 +61,7 @@ Follow the instructions provided [here](http://fpgacpu.wordpress.com/2013/05/24/
                 bootargs = "console=ttyPS0,115200 root=/dev/mmcblk0p2 rw earlyprintk rootfstype=ext3 rootwait devtmpfs.mount=0";
         };
 
-This will enable your kernel to mount the root filesystem from the second partition of your sd card. Note that because we use the rootfs for pandaboard which was configured as ext3 we should use the same in boot arguments. Then put the whole section of *fpga-axi* in comments. This section is responsible for configuring analog devices (such as video, audio sources) but it has some bugs so it doesn't work properly.
+This will instruct your kernel to mount the root filesystem from the second partition of your sd card. Note that because we use the rootfs for pandaboard which was configured as ext3 we should use the same in boot arguments. Then put the whole section of *fpga-axi* in comments. This section is responsible for configuring analog devices (such as video, audio sources) but it has some bugs so it doesn't work properly.
 
 ##Building the boot image BOOT.BIN##
 Follow the instructions provided [here](http://fpgacpu.wordpress.com/2013/05/24/yet-another-guide-to-running-linaro-ubuntu-desktop-on-xilinx-zynq-on-the-zedboard/) in the respective part. Alternatively, if you don't want to use the HDMI port you can skip the process of creating the system bitstream and first stage boot loader and go straight to build the *BOOT.BIN* file from the ones included in the guide you downloaded.
@@ -72,4 +72,5 @@ In order to see what's going on during the system booting you should connect you
 
 ###Booting Linux on Zedboard###
 Now copy the three files *BOOT.BIN*, *devicetree.dtb* and *uImage* created by the previous steps in the /boot partition of your SD card. Then insert the card into the board and connect it with your computer. Turn the power switch on and open Tera Term. From **Setup->Serial Port** configure the baud rate to 115200 and click ok.
+Optionally at this point, the terminal settings can be saved for later use. To do so, click on **Setup->Save**.
 
