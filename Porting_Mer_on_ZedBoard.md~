@@ -38,6 +38,7 @@ needs to be changed to:
 	PARAMETER HW_VER = 5.02.a
 
 This is required because the Xilinx Platform and SDK included in the DVD are a bit older than the ones used in the guide. This step will take much time (roughly 2 hours) so proceed with the next ones.
+Note that this step is only required if you want to use the HDMI port of the board. If you are not interested then you can take the already built *system.bit* and *zynq_fsbl_0.elf* files contained in *lab1_3_solution* folder of the guide you downloaded in the previous step.
 
 ##Building u-boot, the Linux bootloader##
 Just follow the instructions provided [here](http://fpgacpu.wordpress.com/2013/05/24/yet-another-guide-to-running-linaro-ubuntu-desktop-on-xilinx-zynq-on-the-zedboard/) in the respective part. Before building u-boot add this line to your .bash_profile:
@@ -63,7 +64,7 @@ Follow the instructions provided [here](http://fpgacpu.wordpress.com/2013/05/24/
 This will enable your kernel to mount the root filesystem from the second partition of your sd card. Note that because we use the rootfs for pandaboard which was configured as ext3 we should use the same in boot arguments. Then put the whole section of *fpga-axi* in comments. This section is responsible for configuring analog devices (such as video, audio sources) but it has some bugs so it doesn't work properly.
 
 ##Building the boot image BOOT.BIN##
-Follow the instructions provided [here](http://fpgacpu.wordpress.com/2013/05/24/yet-another-guide-to-running-linaro-ubuntu-desktop-on-xilinx-zynq-on-the-zedboard/) in the respective part.
+Follow the instructions provided [here](http://fpgacpu.wordpress.com/2013/05/24/yet-another-guide-to-running-linaro-ubuntu-desktop-on-xilinx-zynq-on-the-zedboard/) in the respective part. Alternatively, if you don't want to use the HDMI port you can skip the process of creating the system bitstream and first stage boot loader and go straight to build the *BOOT.BIN* file from the ones included in the guide you downloaded.
 
 ##Testing the system##
 ###Connecting your PC with the board through the UART serial port###
