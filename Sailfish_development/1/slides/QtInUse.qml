@@ -45,7 +45,7 @@ Slide {
         "In mobility",
         " Nokia N9",
         " BB10",
-        " Ubuntu touch"
+        " Jolla phone with Sailfish",
     ]
 
     // Put nice pictures

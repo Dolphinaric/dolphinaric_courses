@@ -41,7 +41,7 @@ Slide {
         " Windows, Linux, Mac",
         " BB10, Sailfish, iOS, Android",
         " Embedded platforms",
-        "Qt is Open-source"
+        "Qt is open source"
     ]
 
     Image {

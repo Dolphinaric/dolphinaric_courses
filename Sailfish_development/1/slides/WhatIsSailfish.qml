@@ -39,7 +39,7 @@ Slide {
     content: [
         "A platform developed by Jolla",
         " Jolla is a Start-up composed by ex-Nokians",
-        "Based on the Mer project and Nemo mobile",
+        " Based on the Mer project and Nemo mobile",
         " Mer is a Linux based core distribution",
         " Nemo mobile is a community distribution for mobile devices"
     ]
