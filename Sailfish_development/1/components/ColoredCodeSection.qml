@@ -30,46 +30,24 @@
  */
 
 import QtQuick 2.1
+import org.SfietKonstantin.qmldecorator 1.0
 
-Rectangle {
+CodeSection {
     id: container
-    property alias readOnly: code.readOnly
-    property alias code: code.text
-    property real fontSize: parent.baseFontSize / 2
-    property alias textDocument: code.textDocument
 
-    width: parent.width / 2 - 10
-    anchors.top: parent.top
-    anchors.right: parent.right
-    height: Math.min(code.paintedHeight + 40, parent.height)
-    color: "#287F93"
+    QmlSyntaxHighlighter {
+        Component.onCompleted: document = container.textDocument
+        palette: palette
+    }
 
-    Flickable {
-        anchors.fill: parent
-        anchors.margins: 20
-        contentWidth: code.width
-        contentHeight: code.height
-        clip: true
-
-        TextEdit {
-            id: code
-            text: container.text
-            font.family: "Monospace"
-            font.pixelSize: container.fontSize
-            color: "white"
-            onTextChanged: {
-                var cursor = cursorPosition
-                var tabsCount = 0
-                var indexOfTab = text.indexOf("\t", 0)
-                while (indexOfTab != -1) {
-                    tabsCount ++
-                    indexOfTab = text.indexOf("\t", indexOfTab + 2)
-                }
-                text = text.replace("\t", "    ")
-                if (tabsCount > 0) {
-                    cursorPosition = cursor + 3
-                }
-            }
-        }
+    QmlSyntaxHighlighterPalette {
+        id: palette
+        keyword: "#FFFFBF"
+        component: "#DFBFFF"
+        identifier: "#FFBFBF"
+        macro: "#BFD9FF"
+        string: "#BFFFBF"
+        comment: "#EEEEEE"
+        number: "#A8DDE0"
     }
 }

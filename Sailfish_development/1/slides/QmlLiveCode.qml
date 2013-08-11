@@ -34,8 +34,17 @@ import Qt.labs.presentation 1.0
 import "../components"
 
 Slide {
+    id: slide
     title: "Live demo"
+    property Item codePad
+    property string code: "import QtQuick 2.0
 
+Rectangle {
+    width: 50
+    height: 50
+    color: \"black\"
+}
+"
     Item {
         id: container
         property Item createdObject: null
@@ -44,21 +53,23 @@ Slide {
         anchors.left: parent.left
     }
 
-    CodeSection {
-        code: "import QtQuick 2.0
 
-Rectangle {
-    width: 50
-    height: 50
-    color: \"black\"
-}
-"
-        onCodeChanged: {
-            if (container.createdObject != null) {
-                container.createdObject.destroy()
-            }
-
-            container.createdObject = Qt.createQmlObject(code, container, "DemoCode")
+    Component.onCompleted: {
+        var component
+        if (root.haveColor) {
+            component = Qt.createComponent(Qt.resolvedUrl("../components/ColoredCodeSection.qml"))
+        } else {
+            component = Qt.createComponent(Qt.resolvedUrl("../components/CodeSection.qml"))
         }
+        if (component.status == Component.Ready) {
+            slide.codePad = component.createObject(slide, {code: slide.code})
+            container.createdObject = Qt.createQmlObject(codePad.code, container, "DemoCode")
+        }
+    }
+
+    Connections {
+        target: codePad
+        onCodeChanged: container.createdObject = Qt.createQmlObject(codePad.code, container,
+                                                                    "DemoCode")
     }
 }
