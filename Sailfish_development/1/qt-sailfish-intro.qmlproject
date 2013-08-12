@@ -1,0 +1,16 @@
+import QmlProject 1.1
+
+Project {
+    mainFile: "main.qml"
+//    mainFile: "main_nocolor.qml"
+    
+    QmlFiles {
+        directory: "."
+    }
+    JavaScriptFiles {
+        directory: "."
+    }
+    ImageFiles {
+        directory: "."
+    }
+}
