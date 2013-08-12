@@ -29,47 +29,4 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
  */
 
-import QtQuick 2.1
-
-Rectangle {
-    id: container
-    property alias readOnly: code.readOnly
-    property alias code: code.text
-    property real fontSize: parent.baseFontSize / 2
-    property alias textDocument: code.textDocument
-
-    width: parent.width / 2 - 10
-    anchors.top: parent.top
-    anchors.right: parent.right
-    height: Math.min(code.paintedHeight + 40, parent.height)
-    color: "#287F93"
-
-    Flickable {
-        anchors.fill: parent
-        anchors.margins: 20
-        contentWidth: code.width
-        contentHeight: code.height
-        clip: true
-
-        TextEdit {
-            id: code
-            text: container.text
-            font.family: "Monospace"
-            font.pixelSize: container.fontSize
-            color: "white"
-            onTextChanged: {
-                var cursor = cursorPosition
-                var tabsCount = 0
-                var indexOfTab = text.indexOf("\t", 0)
-                while (indexOfTab != -1) {
-                    tabsCount ++
-                    indexOfTab = text.indexOf("\t", indexOfTab + 2)
-                }
-                text = text.replace("\t", "    ")
-                if (tabsCount > 0) {
-                    cursorPosition = cursor + 3
-                }
-            }
-        }
-    }
-}
+SlideDeck {haveColor: false}

@@ -31,24 +31,11 @@
 
 import QtQuick 2.0
 import Qt.labs.presentation 1.0
-import "../components"
 
 Slide {
+    id: slide
     title: "QML and Qt Quick"
-
-    content: [
-        "QML is a declarative language",
-        "Qt Quick is the Qt UI Creation Kit",
-        " A way to create UI using QML",
-        " Introduced in Qt 4.7",
-        " Greatly improved in Qt 5.0",
-        "This presentation is done with QML"
-    ]
-    contentWidth: width / 2 - 10
-
-    CodeSection {
-        readOnly: true
-        code: "import QtQuick 2.0
+    property string code: "import QtQuick 2.0
 
 Rectangle {
     width: 640
@@ -66,5 +53,26 @@ Rectangle {
         text: \"Click me !\"
     }
 }"
+
+    content: [
+        "QML is a declarative language",
+        "Qt Quick is the Qt UI Creation Kit",
+        " A way to create UI using QML",
+        " Introduced in Qt 4.7",
+        " Greatly improved in Qt 5.0",
+        "This presentation is done with QML"
+    ]
+    contentWidth: width / 2 - 10
+
+    Component.onCompleted: {
+        var component
+        if (root.haveColor) {
+            component = Qt.createComponent(Qt.resolvedUrl("../components/ColoredCodeSection.qml"))
+        } else {
+            component = Qt.createComponent(Qt.resolvedUrl("../components/CodeSection.qml"))
+        }
+        if (component.status == Component.Ready) {
+            component.createObject(slide, {readOnly: true, code: slide.code})
+        }
     }
 }

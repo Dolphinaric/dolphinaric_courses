@@ -36,6 +36,17 @@ import "../components"
 Slide {
     id: container
     title: "Sailfish OS uses QtQuick"
+    property string code: "import QtQuick 2.0
+import Sailfsh.Silica 1.0
+
+ApplicationWindow {
+    initialPage: Page {
+        Label {
+            anchors.centerIn: parent
+            text: qsTr(\"Hello sailors !\")
+        }
+    }
+}"
 
     content: [
         "Sailfish user interface is built with QML",
@@ -47,18 +58,15 @@ Slide {
 
     contentWidth: width / 2 - 10
 
-    CodeSection {
-        readOnly: true
-        code: "import QtQuick 2.0
-import Sailfsh.Silica 1.0
-
-ApplicationWindow {
-    initialPage: Page {
-        Label {
-            anchors.centerIn: parent
-            text: qsTr(\"Hello sailors !\")
+    Component.onCompleted: {
+        var component
+        if (root.haveColor) {
+            component = Qt.createComponent(Qt.resolvedUrl("../components/ColoredCodeSection.qml"))
+        } else {
+            component = Qt.createComponent(Qt.resolvedUrl("../components/CodeSection.qml"))
         }
-    }
-}"
+        if (component.status == Component.Ready) {
+            component.createObject(container, {readOnly: true, code: container.code})
+        }
     }
 } 
