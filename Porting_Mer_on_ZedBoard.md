@@ -48,11 +48,15 @@ Just follow the instructions provided [here](http://fpgacpu.wordpress.com/2013/0
 Keep in mind that you should execute this step on your CentOs virtual machine.
 
 ##Building the linux kernel##
-Follow the instructions provided [here](http://fpgacpu.wordpress.com/2013/05/24/yet-another-guide-to-running-linaro-ubuntu-desktop-on-xilinx-zynq-on-the-zedboard/) in the respective part. Before you configure the kernel edit *arch/arm/configs/zynq_xcomm_adv7511_defconfig* and add this line at the beginning:
+Follow the instructions provided [here](http://fpgacpu.wordpress.com/2013/05/24/yet-another-guide-to-running-linaro-ubuntu-desktop-on-xilinx-zynq-on-the-zedboard/) in the respective part. Before you configure the kernel edit *arch/arm/configs/zynq_xcomm_adv7511_defconfig* and add these lines at the beginning:
 
+	CONFIG_AUTOFS4_FS=y
+	CONFIG_IPV6=y
 	CONFIG_CGROUPS=y
+	CONFIG_DEVTMPFS=y
+	CONFIG_FANOTIFY=y
 
-This will enable D-bus messages on your system and you will be able to use *systemctl* to manipulate running services.
+The third one will enable D-bus messages on your system and you will be able to use *systemctl* to manipulate running services. The others are for silencing some warnings or errors during booting process.
 
 ##Building devicetree.dtb##
 Follow the instructions provided [here](http://fpgacpu.wordpress.com/2013/05/24/yet-another-guide-to-running-linaro-ubuntu-desktop-on-xilinx-zynq-on-the-zedboard/) in the respective part. Add these lines to *arch/arm/boot/dts/zynq-zed-adv7511.dts*:
@@ -72,5 +76,14 @@ In order to see what's going on during the system booting you should connect you
 
 ###Booting Linux on Zedboard###
 Now copy the three files *BOOT.BIN*, *devicetree.dtb* and *uImage* created by the previous steps in the /boot partition of your SD card. Then insert the card into the board and connect it with your computer. Turn the power switch on and open Tera Term. From **Setup->Serial Port** configure the baud rate to 115200 and click ok.
-Optionally at this point, the terminal settings can be saved for later use. To do so, click on **Setup->Save**.
+Optionally at this point, the terminal settings can be saved for later use. To do so, click on **Setup->Save**. 
+When booting there might be a problem with mounting the /boot partition automatically. You can enter an emergency shell as root and manually mount it. You have to run the following commands:
+
+	mount /boot
+	systemctl default
+
+Then the booting process will continue and you will be able to login normally to the system.
+
+###Graphics Support on Zedboard###
+Unfortunately, there is no GPU embedded on the Cortex-A9 processor for zedboard. This is rather annoying as you can not run X server to get a graphical user interface. The solution to this is to use the FPGAs as a compensation for the lack of GPU. This requires a lot of knowledge in programming FPGAs because you have to implement your own hardware. As you can imagine this is quite difficult and out of the goals of this guide so it is not included.
 
