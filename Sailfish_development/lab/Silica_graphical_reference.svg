@@ -55,9 +55,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="510.38202"
-     inkscape:cy="542.84608"
+     inkscape:zoom="1"
+     inkscape:cx="461.42529"
+     inkscape:cy="439.17349"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -134,7 +134,7 @@
          x="261.59253"
          y="631.89124"
          style="font-size:16px;text-align:center;text-anchor:middle"
-         id="tspan5193">ver. 0.2 by fk_lx for Dolphinaric project (http://dolphinaric.org)</tspan></text>
+         id="tspan5193">ver. 0.3 by fk_lx for Dolphinaric project (http://dolphinaric.org)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -1259,7 +1259,7 @@
     <path
        inkscape:connector-curvature="0"
        id="path3454-7"
-       d="m 175,407.69294 0,115.33845"
+       d="m 175,407.81451 0,143.3796"
        style="fill:none;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:none" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:none"
@@ -1498,6 +1498,16 @@
        style="fill:none;stroke:#c7862d;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:none"
        d="m 942.0886,349.65919 37.0098,0"
        id="path3364"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3242"
+       d="m 174.50703,550.71954 13.32772,0"
+       style="fill:none;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:none" />
+    <path
+       style="fill:none;stroke:#c7862d;stroke-width:0.99999982px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:none"
+       d="m 550.82859,670.04102 11.42745,0"
+       id="path3244"
        inkscape:connector-curvature="0" />
   </g>
 </svg>
